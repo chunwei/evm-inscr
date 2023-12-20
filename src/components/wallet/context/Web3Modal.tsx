@@ -1,7 +1,10 @@
 'use client'
 
 import { chains } from '@config/chains'
+import { Web3Modal } from '@web3modal/ethers/dist/types/src/client'
 import { createWeb3Modal, defaultConfig } from '@web3modal/ethers/react'
+import { useTheme } from 'next-themes'
+import { useEffect, useRef } from 'react'
 
 // 1. Get projectId at https://cloud.walletconnect.com
 const projectId = 'a09ff6fb36c0b5124cd391488f5ff587'
@@ -30,12 +33,23 @@ const metadata = {
   icons: ['https://avatars.mywebsite.com/']
 }
 
-createWeb3Modal({
-  ethersConfig: defaultConfig({ metadata }),
-  chains: support_chains,
-  projectId
-})
-
 export function Web3ModalProvider({ children }: { children: React.ReactNode }) {
+  const { theme } = useTheme()
+  const web3modal = useRef<Web3Modal>()
+  useEffect(() => {
+    web3modal.current = createWeb3Modal({
+      ethersConfig: defaultConfig({ metadata }),
+      chains: support_chains,
+      projectId,
+      themeMode: theme as any
+    })
+  }, [])
+
+  useEffect(() => {
+    if (web3modal.current) {
+      web3modal.current.setThemeMode(theme as any)
+    }
+  }, [theme])
+
   return children
 }

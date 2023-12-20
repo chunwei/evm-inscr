@@ -29,16 +29,16 @@ export default async function LocaleLayout({
       <body>
         <QueryProvider>
           <ReduxProvider>
+                <ThemeProvider locale={locale}>
             <Web3ModalProvider>
               <WalletProvider>
-                <ThemeProvider locale={locale}>
                   {/* <BgGradient /> */}
                   <SiteHeader />
                   <main>{children}</main>
                   <SiteFooter />
-                </ThemeProvider>
               </WalletProvider>
             </Web3ModalProvider>
+                </ThemeProvider>
           </ReduxProvider>
         </QueryProvider>
       </body>
