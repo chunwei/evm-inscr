@@ -8,7 +8,9 @@
  */
 // import FormComponent from '@components/FormComponent'
 import GradientButton from '@components/GradientButton'
+import DeployModal from '@components/inscribe/evm/DeployModal'
 import Link from 'next/link'
+import { useState } from 'react'
 
 export default function Page() {
   const NavItems: any[] = [
@@ -26,12 +28,30 @@ export default function Page() {
     // }
   ]
 
+  const [showDeployModal, setShowDeployModal] = useState(false)
+  const openSelectorModal = () => {
+    setShowDeployModal(true)
+  }
+  const onModalClose = () => {
+    setShowDeployModal(false)
+  }
+
   return (
     <section className="container grid items-center gap-6 pb-8 pt-6 md:py-10">
       <h1 className="text-center text-4xl font-extrabold !leading-tight tracking-tighter">
-        site.desc
+        deploy
       </h1>
-      {NavItems?.map(
+      <div>
+        <GradientButton
+          color="framer"
+          className=" shadow-framer"
+          onClick={openSelectorModal}
+        >
+          <span>Deploy</span>
+        </GradientButton>
+        <DeployModal open={showDeployModal} onClose={onModalClose} />
+      </div>
+      {/* {NavItems?.map(
         (item, index) =>
           item.href && (
             <Link
@@ -44,7 +64,7 @@ export default function Page() {
               </GradientButton>
             </Link>
           )
-      )}
+      )} */}
     </section>
   )
 }
