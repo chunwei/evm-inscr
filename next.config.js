@@ -6,7 +6,6 @@ const nextConfig = {
   output: 'standalone',
   reactStrictMode: true,
   transpilePackages: ['antd'],
-  swcMinify: true,
   images: {
     formats: ['image/avif', 'image/webp']
   },
@@ -17,6 +16,7 @@ const nextConfig = {
         fs: false
       }
     }
+    config.externals.push('pino-pretty', 'lokijs', 'encoding')
 
     return config
   },

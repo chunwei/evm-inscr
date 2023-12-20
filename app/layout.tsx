@@ -1,9 +1,10 @@
-import { BgGradient } from '@components/BgGradient'
-import ThemeProvider from '@components/Providers'
-import QueryProvider from '@components/QueryProvider'
-import SiteFooter from '@components/SiteFooter'
-import { SiteHeader } from '@components/SiteHeader'
+import { BgGradient } from '@components/BgGradient';
+import ThemeProvider from '@components/Providers';
+import QueryProvider from '@components/QueryProvider';
+import SiteFooter from '@components/SiteFooter';
+import { SiteHeader } from '@components/SiteHeader';
 import { WalletProvider } from '@components/wallet/context/WalletContext'
+import { Web3ModalProvider } from '@components/wallet/context/Web3Modal'
 // import 'antd/dist/reset.css'
 import '@public/antd.min.css'
 import { ReduxProvider } from '@redux/ReduxProvider'
@@ -28,14 +29,16 @@ export default async function LocaleLayout({
       <body>
         <QueryProvider>
           <ReduxProvider>
-            <WalletProvider>
-              <ThemeProvider locale={locale}>
-                {/* <BgGradient /> */}
-                <SiteHeader />
-                <main>{children}</main>
-                <SiteFooter />
-              </ThemeProvider>
-            </WalletProvider>
+            <Web3ModalProvider>
+              <WalletProvider>
+                <ThemeProvider locale={locale}>
+                  {/* <BgGradient /> */}
+                  <SiteHeader />
+                  <main>{children}</main>
+                  <SiteFooter />
+                </ThemeProvider>
+              </WalletProvider>
+            </Web3ModalProvider>
           </ReduxProvider>
         </QueryProvider>
       </body>

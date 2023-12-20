@@ -1,13 +1,14 @@
-'use client'
+'use client';
 
 // import LocaleSwitcher from './LocaleSwitcher'
-import { MainNav } from './MainNav'
-import ThemeToggle from './ThemeToggle'
-import WalletButton from './wallet/WalletButton'
-import { useWalletContext } from './wallet/context/WalletContext'
-import { setParentLocation } from '@redux/slices/common'
-import { useAppDispatch } from '@redux/store'
-import { useTheme } from 'next-themes'
+import { MainNav } from './MainNav';
+import ThemeToggle from './ThemeToggle';
+import ConnectButton from './wallet/ConnectButton';
+import WalletButton from './wallet/WalletButton';
+import { useWalletContext } from './wallet/context/WalletContext';
+import { setParentLocation } from '@redux/slices/common';
+import { useAppDispatch } from '@redux/store';
+import { useTheme } from 'next-themes';
 import { useCallback, useEffect } from 'react'
 import useIsInIframe from 'src/hooks/useIsInIframe'
 
@@ -82,7 +83,8 @@ export function SiteHeader() {
             {/* <LocaleSwitcher /> */}
             <ThemeToggle />
             <div className="inline w-6" />
-            <WalletButton />
+            {/* <WalletButton /> */}
+            <ConnectButton />
           </nav>
         </div>
       </div>
