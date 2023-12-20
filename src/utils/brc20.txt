@@ -1,0 +1,1 @@
+{"p":"brc-20","op":"deploy","tick":"yydsabc","max":"210000","lim":"100","dec":"18"}

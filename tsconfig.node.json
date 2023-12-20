@@ -1,0 +1,11 @@
+{
+    "compilerOptions": {
+			"strictNullChecks": true,
+			"module": "NodeNext",
+			"target": "ES2018",
+			"jsx": "react",
+			"esModuleInterop": true,
+			"resolveJsonModule": true
+		},
+    "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"]
+}

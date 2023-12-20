@@ -1,0 +1,80 @@
+.loading-dots {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+.dot {
+    width: 4px;
+    height: 4px;
+    /* border-radius: 50%; */
+    background-color: theme('colors.blue.600');
+    margin: 0 2px;
+    opacity: 0;
+    
+  }
+  
+  .dot1 {
+      animation: dot1-animation 1.5s infinite;
+  }
+  
+  .dot2 {
+      /* background-color: #e51010; */
+      animation: dot2-animation 1.5s infinite;
+  }
+  
+  .dot3 {
+      /* background-color: #300aee; */
+      animation: dot3-animation 1.5s infinite;
+  }
+}
+  @keyframes dot1-animation {
+    0% {
+      opacity: 1;
+    }
+    25% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 1;
+    }
+    75% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0.5;
+    }
+  }
+  @keyframes dot2-animation {
+      0% {
+      opacity: 0;
+    }
+    25% {
+      opacity: 0;
+    }
+    50% {
+      opacity: 1;
+    }
+    75% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+  @keyframes dot3-animation {
+      0% {
+      opacity: 0;
+    }
+    25% {
+      opacity: 0;
+    }
+    50% {
+      opacity: 0;
+    }
+    75% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }

@@ -1,0 +1,302 @@
+@import 'antd/dist/reset.css';
+@import './index.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  --ordi-card-hover-bg: linear-gradient(90deg, rgba(255, 233, 244, 0.4) 0%, rgba(234, 243, 255, 0.7) 100%);
+  --shadow-large: 0 30px 60px rgba(0,0,0,.12);
+  --shadow-normal: 0 2px 6px rgba(0, 0, 0, .08);
+  --floral-1: linear-gradient(90deg, #FF4E9C 0%, #EA29DE 31.93%, #B723D8 63.03%, #5606EF 100%);
+    --floral-1c: ##EA29DE;
+    --floral-2: linear-gradient(90deg, #8D2DE3 0%, #FF2497 97.34%);
+    --floral-2c: #8D2DE3;
+    --grass-1: linear-gradient(90deg, #782AFD 0%, #2771F3 33.33%, #00B4E4 66.67%, #00D8B2 100%);
+    --grass-1c: #2771F3;
+    --grass-2: linear-gradient(90deg, #1C45A6 0%, #44B5A2 50%, #D4FBB5 100%);
+    --grass-2c: #1C45A6;
+    --grass-3: linear-gradient(90deg, #FFDC27 0%, #46E3B7 95%);
+    --grass-3c: #46E3B7;
+    --dreamy-1: linear-gradient(73.19deg, #DC79FF 0%, #256BFA 95.06%);
+    --dreamy-1c: #DC79FF;
+    --dreamy-2: linear-gradient(96.01deg, #455EB5 10.43%, #5643CC 53.88%, #673FD7 97.33%);
+    --dreamy-2c: #5606EF;
+    --rainbow-1: linear-gradient(90deg, #00DAF4 0%, #5EDC99 20%, #BADA6D 40%, #FFC800 60%, #FFAF00 80%, #FF7800 100%);
+    --rainbow-1c: #5EDC99;
+    --rainbow-2: linear-gradient(90deg, #DC36FA 0%, #A167EF 25%, #609FE4 50%, #3ABFDE 75%, #04D18E 100%);
+    --rainbow-2c: #A167EF;
+    --retro-1: linear-gradient(69.55deg, #D400A5 12.23%, #1E76C9 55.91%, #35FCED 92.87%);
+    --retro-1c: #D400A5;
+    --retro-2: linear-gradient(90.42deg, #4AB1F1 0.58%, #566CEC 37.22%, #D749AF 73.87%, #FF7C51 112.26%);
+    --retro-2c: #566CEC;
+    --retro-3: linear-gradient(90deg, #566cec, #d749af 50%, #ff7c51);
+    --retro-3c: #566cec;
+    --sky-1: linear-gradient(90deg, #80D0F2 0%, #5C82FF 50%, #C480FF 100%);
+    --sky-1c: #80D0F2;
+    --sky-2: linear-gradient(90deg, #47189C 0%, #3861BC 50%, #80D6E1 100%);
+    --sky-2c: #47189C;
+    --sky-3: linear-gradient(90deg, #1584EB 0%, #24D6D9 97.34%);
+    --sky-3c: #1584EB;
+    --rose-1: linear-gradient(73.19deg, #DF51AD 0%, #EB587D 95.06%);
+    --rose-1c: #DF51AD;
+    --rose-2: linear-gradient(73.19deg, #AE41C5 0%, #EA29DE 95.06%);
+    --rose-2c: #AE41C5;
+    --sunset-1c: #FF0063;
+    --sunset-1: linear-gradient(90deg, #FFC800 0%, #FB6A19 50%, #FF0063 100%);
+    --sunset-2: linear-gradient(90deg, #F06844 0%, #EE4C54 25%, #D45E95 50%, #9C6CA6 75%, #6583C1 100%);
+    --sunset-3c: #F06844;
+    --sunset-3: linear-gradient(90deg, #F7BE2B 0%, #F537F9 100%);
+    --sunset-2c: #EE4C54;
+    --coffee-1: linear-gradient(258.32deg, #FBFBFD 0%, #E795B7 32.71%, #935893 65.43%, #224D88 98.14%);
+    --coffee-1c: #FBFBFD;
+    --coffee-2: linear-gradient(270deg, #FA6E6E 0%, #A3387E 48.88%, #224D88 97.75%);
+    --coffee-2c: #FA6E6E;
+    --coffee-3: linear-gradient(99.66deg, #E84E38 10.18%, #BA2CB8 92.84%);
+    --coffee-3c: #BA2CB8;
+}
+html.dark {
+  * {
+    --ordi-card-hover-bg: linear-gradient(90deg, rgba(30, 28, 50, 0.8) 0%, rgba(43, 22, 29, 0.7) 100%);
+  }
+}
+.btn {
+  @apply inline-flex h-9 cursor-pointer items-center justify-center rounded-md bg-transparent px-2 text-sm font-medium transition-colors hover:bg-zinc-100 focus:outline-none focus:bg-zinc-100 active:scale-95 disabled:pointer-events-none disabled:opacity-50 data-[state=open]:bg-transparent dark:text-zinc-100 dark:hover:bg-zinc-800 dark:hover:text-zinc-100 dark:focus:bg-zinc-800 dark:focus:ring-zinc-400 dark:focus:ring-offset-zinc-900 dark:data-[state=open]:bg-transparent
+}
+
+@layer base {
+  body {
+    position: relative;
+    min-height: 100vh;
+    height: auto;
+  }
+/* 默认有背景的话，iframe加载时会闪烁一下 */
+/* body:not(.inIframe):before {
+  content: "";
+  position: absolute;
+  inset: 0px;
+  z-index: -100;
+  background-image: url(../../public/images/header-gradient.svg), url(../../public/images/footer-gradient.svg);
+  background-repeat: no-repeat;
+  background-position: center top, center bottom;
+  background-size: 1400px;
+}
+
+*/
+}
+@layer components{
+  .ordi-card {
+      background: transparent;
+    }
+  
+    .ordi-card::before {
+      content: "";
+      border-radius: 8px;
+      display: block;
+      position: absolute;
+      z-index: -1;
+      inset: -2px;
+      opacity: 0;
+      transform: scale(0.8);
+    }
+  
+    .ordi-card:hover:before {
+      opacity: 1;
+      transform: scale(1);
+      background: var(--ordi-card-hover-bg);
+      transition: all 333ms ease 0s;
+    }
+  .gradient-button-wrapper{
+    --start-color: #007CF0;
+    --end-color: #00DFD8;
+    --content:'';
+    position: relative;
+    
+    .gradient-btn-bg{
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border-radius: 8px;
+      background-image: linear-gradient(165deg,var(--start-color),var(--end-color));
+
+      &::before{
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        opacity: 0.8;
+        filter: blur(36px);
+        border: solid 12px transparent;
+        content: var(--content);
+        background-clip: padding-box;
+        background-image: linear-gradient(165deg,var(--start-color),var(--end-color));
+      }
+    }
+  }
+
+  .gradient-text-bg{
+    position: relative;
+    display: block;
+    -webkit-user-select: none;
+    user-select: none;
+    --content: 'Develop.';
+    --padding: 0.05em;
+    --start-color: #007CF0;
+    --end-color: #00DFD8;
+
+    &::before{
+      content: var(--content);
+      position: absolute;
+      display: block;
+      width: 100%;
+      text-align: center;
+      margin-bottom: -10px;
+      background: var(--geist-text-gradient);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      z-index: 0;
+      padding-left: var(--padding);
+      padding-right: var(--padding);
+    }
+
+    .gradient-text-fg{
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      padding-left: var(--padding);
+      padding-right: var(--padding);
+      background-image: linear-gradient(90deg,var(--start-color),var(--end-color));
+      position: relative;
+      z-index: 1;
+    }
+  }
+}
+@layer utilities {
+
+
+  .gradient-text {
+    background-size: 100%;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-repeat: repeat;
+  }
+
+  .rainbow-1 {
+    background-color: var(--rainbow-1c);
+    background-image: var(--rainbow-1);
+  }
+
+  .rainbow-2 {
+    background-color: var(--rainbow-2c);
+    background-image: var(--rainbow-2);
+  }
+
+  .rose-1 {
+    background-color: var(--rose-1c);
+    background-image: var(--rose-1);
+  }
+
+  .rose-2 {
+    background-color: var(--rose-2c);
+    background-image: var(--rose-2);
+  }
+
+  .retro-1 {
+    background-color: var(--retro-1c);
+    background-image: var(--retro-1);
+  }
+
+  .retro-2 {
+    background-color: var(--retro-2c);
+    background-image: var(--retro-2);
+  }
+
+  .retro-3 {
+    background-color: var(--retro-3c);
+    background-image: var(--retro-3);
+  }
+
+  .dreamy-1 {
+    background-color: var(--dreamy-1c);
+    background-image: var(--dreamy-1);
+  }
+
+  .dreamy-2 {
+    background-color: var(--dreamy-2c);
+    background-image: var(--dreamy-2);
+  }
+
+  .floral-1 {
+    background-color: var(--floral-1c);
+    background-image: var(--floral-1);
+  }
+
+  .floral-2 {
+    background-color: var(--floral-2c);
+    background-image: var(--floral-2);
+  }
+
+  .sky-1 {
+    background-color: var(--sky-1c);
+    background-image: var(--sky-1);
+  }
+
+  .sky-2 {
+    background-color: var(--sky-2c);
+    background-image: var(--sky-2);
+  }
+
+  .sky-3 {
+    background-color: var(--sky-3c);
+    background-image: var(--sky-3);
+  }
+
+  .glass-1 {
+    background-color: var(--glass-1c);
+    background-image: var(--glass-1);
+  }
+
+  .glass-2 {
+    background-color: var(--glass-2c);
+    background-image: var(--glass-2);
+  }
+
+  .glass-3 {
+    background-color: var(--glass-3c);
+    background-image: var(--glass-3);
+  }
+
+  .coffee-1 {
+    background-color: var(--coffee-1c);
+    background-image: var(--coffee-1);
+  }
+
+  .coffee-2 {
+    background-color: var(--coffee-2c);
+    background-image: var(--coffee-2);
+  }
+
+  .coffee-3 {
+    background-color: var(--coffee-3c);
+    background-image: var(--coffee-3);
+  }
+
+  .sunset-1 {
+    background-color: var(--sunset-1c);
+    background-image: var(--sunset-1);
+  }
+
+  .sunset-2 {
+    background-color: var(--sunset-2c);
+    background-image: var(--sunset-2);
+  }
+
+  .sunset-3 {
+    background-color: var(--sunset-3c);
+    background-image: var(--sunset-3);
+  }
+}

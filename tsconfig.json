@@ -1,0 +1,61 @@
+{
+  "ts-node": {
+    "esm": true,
+    "experimentalSpecifierResolution": "node",
+    "compilerOptions": {
+      "isolatedModules": false
+    }
+  },
+  "compilerOptions": {
+    "target": "es5",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "downlevelIteration": true,
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "baseUrl": ".",
+    "paths": {
+      "@components/*": ["src/components/*"],
+      "@components": ["src/components"],
+      "@public/*": ["public/*"],
+      "@public": ["public"],
+      "@messages/*": ["messages/*"],
+      "@messages": ["messages"],
+      "@styles/*": ["src/styles/*"],
+      "@styles": ["src/styles"],
+      "@config/*": ["src/config/*"],
+      "@config": ["src/config"],
+      "@services/*": ["src/services/*"],
+      "@services": ["src/services"],
+      "@types/*": ["src/types/*"],
+      "@types": ["src/types"],
+      "@graphqlTypes/*": ["__generated__/*"],
+      "@graphqlTypes": ["__generated__"],
+      "@redux/*": ["src/redux/*"],
+      "@redux": ["src/redux"],
+      "@test/*": ["test/*"],
+      "@test": ["test"]
+    },
+    "incremental": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ]
+  },
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+  "exclude": [
+    "node_modules",
+    "__generated__/globalTypes.ts",
+    "test/*",
+    "cypress/*"
+  ]
+}
