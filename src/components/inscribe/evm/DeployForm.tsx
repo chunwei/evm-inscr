@@ -20,13 +20,35 @@ import {
   Segmented,
   Tag
 } from 'antd'
-import { BrowserProvider } from 'ethers'
+import { BrowserProvider, Contract } from 'ethers'
 import { useMemo, useState } from 'react'
 import useIsInIframe from 'src/hooks/useIsInIframe'
-import { textToHex } from 'src/utils/encode'
+import { textToHex, textToUnit64Array } from 'src/utils/encode'
 import { capital } from 'src/utils/string'
 
+const StarkiContractAddress =
+  '0x07341189e3c96f636a4192cfba8c18deeee33a19c5d0425a26cf96ea42388c4e'
+const StarkiContractAbi = [
+  {
+    name: 'inscribe',
+    type: 'function',
+    inputs: [
+      {
+        name: 'user_data',
+        type: 'uint64[]'
+      }
+    ],
+    outputs: [
+      {
+        type: 'uint8'
+      }
+    ],
+    stateMutability: 'external'
+  }
+]
+
 type BRC20FormProps = IStepNav
+
 export default function BRC20Form(props: BRC20FormProps) {
   const { stepNavFns } = props
   const [curOp, setCurOp] = useState('deploy')
@@ -34,17 +56,31 @@ export default function BRC20Form(props: BRC20FormProps) {
 
   const { address, chainId, isConnected } = useWeb3ModalAccount()
   const { walletProvider } = useWeb3ModalProvider()
+  const isStarknet = false
   async function doDeploy(dataStr: string) {
     if (!isConnected || !walletProvider) throw Error('User disconnected')
 
     const ethersProvider = new BrowserProvider(walletProvider)
     const signer = await ethersProvider.getSigner()
-    signer.sendTransaction({
-      from: address,
-      to: address,
-      value: 0,
-      data: '0x' + textToHex(dataStr)
-    })
+    let result
+    if (isStarknet) {
+      const StarkInscrContract = new Contract(
+        StarkiContractAddress,
+        StarkiContractAbi,
+        signer
+      )
+      const userData = textToUnit64Array(dataStr)
+      result = await StarkInscrContract.inscribe(userData)
+    } else {
+      result = await signer.sendTransaction({
+        from: address,
+        to: address,
+        value: 0,
+        data: '0x' + textToHex(dataStr)
+      })
+    }
+    console.log('Transaction Hash:', result?.hash)
+    console.log('Transaction Receipt:', await result?.wait())
   }
 
   const onChange = (e: RadioChangeEvent) => {

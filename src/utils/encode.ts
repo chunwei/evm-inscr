@@ -4,6 +4,12 @@ export function textToHex(text: string): string {
   ).join('')
 }
 
+export function textToUnit64Array(text: string): number[] {
+  return Array.from(new TextEncoder().encode(text), (byte) =>
+    parseInt(byte.toString(16).padStart(2, '0'), 16)
+  )
+}
+
 // // test
 // ;(function () {
 //   // mint

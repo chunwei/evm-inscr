@@ -29,7 +29,7 @@ export default function Page() {
   ]
 
   const [showDeployModal, setShowDeployModal] = useState(false)
-  const openSelectorModal = () => {
+  const openDeployModal = () => {
     setShowDeployModal(true)
   }
   const onModalClose = () => {
@@ -45,7 +45,7 @@ export default function Page() {
         <GradientButton
           color="framer"
           className=" shadow-framer"
-          onClick={openSelectorModal}
+          onClick={openDeployModal}
         >
           <span>Deploy</span>
         </GradientButton>
