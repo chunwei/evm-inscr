@@ -1,16 +1,18 @@
-import { BgGradient } from '@components/BgGradient';
-import ThemeProvider from '@components/Providers';
-import QueryProvider from '@components/QueryProvider';
-import SiteFooter from '@components/SiteFooter';
-import { SiteHeader } from '@components/SiteHeader';
-import { WalletProvider } from '@components/wallet/context/WalletContext'
-import { Web3ModalProvider } from '@components/wallet/context/Web3Modal'
-// import 'antd/dist/reset.css'
-import '@public/antd.min.css'
-import { ReduxProvider } from '@redux/ReduxProvider'
-import '@styles/global.css'
 import { Metadata } from 'next'
 import { notFound } from 'next/navigation'
+
+import { BgGradient } from '@components/BgGradient'
+import ThemeProvider from '@components/Providers'
+import QueryProvider from '@components/QueryProvider'
+import SiteFooter from '@components/SiteFooter'
+import { SiteHeader } from '@components/SiteHeader'
+import { WalletProvider } from '@components/wallet/context/WalletContext'
+import { Web3ModalProvider } from '@components/wallet/context/Web3Modal'
+import { ReduxProvider } from '@redux/ReduxProvider'
+
+// import 'antd/dist/reset.css'
+import '@public/antd.min.css'
+import '@styles/global.css'
 
 // export function generateStaticParams() {
 // 	return [{ locale: 'en-US' }, { locale: 'zh-CN' }]
@@ -29,16 +31,16 @@ export default async function LocaleLayout({
       <body>
         <QueryProvider>
           <ReduxProvider>
-                <ThemeProvider locale={locale}>
-            <Web3ModalProvider>
-              <WalletProvider>
+            <ThemeProvider locale={locale}>
+              <Web3ModalProvider>
+                <WalletProvider>
                   {/* <BgGradient /> */}
                   <SiteHeader />
                   <main>{children}</main>
                   <SiteFooter />
-              </WalletProvider>
-            </Web3ModalProvider>
-                </ThemeProvider>
+                </WalletProvider>
+              </Web3ModalProvider>
+            </ThemeProvider>
           </ReduxProvider>
         </QueryProvider>
       </body>
