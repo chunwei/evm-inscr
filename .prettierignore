@@ -1,0 +1,7 @@
+node_modules
+__generated__
+.next
+.cache
+storybook-static
+public
+package-lock.json

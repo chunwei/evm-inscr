@@ -36,18 +36,17 @@ const metadata = {
 export function Web3ModalProvider({ children }: { children: React.ReactNode }) {
   const { theme } = useTheme()
   const web3modal = useRef<Web3Modal>()
-  useEffect(() => {
-    web3modal.current = createWeb3Modal({
-      ethersConfig: defaultConfig({ metadata }),
-      chains: support_chains,
-      projectId,
-      themeMode: theme as any
-    })
-  }, [])
 
   useEffect(() => {
     if (web3modal.current) {
       web3modal.current.setThemeMode(theme as any)
+    }else{
+      web3modal.current = createWeb3Modal({
+        ethersConfig: defaultConfig({ metadata }),
+        chains: support_chains,
+        projectId,
+        themeMode: theme as any
+      })
     }
   }, [theme])
 

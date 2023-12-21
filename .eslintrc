@@ -1,0 +1,44 @@
+{
+	"$schema": "https://json.schemastore.org/eslintrc",
+	"root": true,
+	"parser": "@typescript-eslint/parser",
+	"plugins": ["@typescript-eslint", "tailwindcss", "prettier", "react-hooks"],
+	"rules": {
+		"@next/next/no-html-link-for-pages": "off",
+		"react/jsx-key": "off",
+		"tailwindcss/no-custom-classname": "off",
+		"@typescript-eslint/no-unused-vars": "off",
+		"@typescript-eslint/no-explicit-any": "off",
+		"prettier/prettier": "off",
+		"react-hooks/rules-of-hooks": "error", // Checks rules of Hooks
+		"react-hooks/exhaustive-deps": "warn" // Checks effect dependencies
+	},
+	"settings": {
+		"tailwindcss": {
+			"callees": ["cn"]
+		}
+	},
+	"overrides": [
+		{
+			"files": ["*.js"],
+			"rules": {
+				"@typescript-eslint/no-var-requires": "off"
+			}
+		}
+	],
+	"env": {
+		"node": true,
+		"browser": true,
+		"amd": true
+	},
+	"extends": [
+		"eslint:recommended",
+		"next/core-web-vitals",
+		"plugin:@typescript-eslint/eslint-recommended",
+		"plugin:@typescript-eslint/recommended",
+		"prettier/@typescript-eslint",
+		"plugin:prettier/recommended",
+		"prettier",
+		"plugin:tailwindcss/recommended"
+	]
+}

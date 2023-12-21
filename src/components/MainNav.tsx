@@ -50,7 +50,7 @@ export function MainNav() {
             <Link
               key={item.href}
               href={item.href}
-              className="hidden items-center space-x-2 font-sans font-bold text-slate-600 hover:text-slate-900 dark:text-slate-100 sm:hidden md:flex"
+              className="hidden items-center space-x-2 font-sans font-bold text-slate-600 hover:text-slate-900 sm:hidden md:flex dark:text-slate-100"
             >
               {item.icon && <item.icon className="h-4 w-4" />}
               <span>{item.title}</span>
