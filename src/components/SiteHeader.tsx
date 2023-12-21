@@ -1,16 +1,17 @@
 'use client';
 
-// import LocaleSwitcher from './LocaleSwitcher'
-import { MainNav } from './MainNav';
-import ThemeToggle from './ThemeToggle';
-import ConnectButton from './wallet/ConnectButton';
-import WalletButton from './wallet/WalletButton';
-import { useWalletContext } from './wallet/context/WalletContext';
-import { setParentLocation } from '@redux/slices/common';
-import { useAppDispatch } from '@redux/store';
-import { useTheme } from 'next-themes';
 import { useCallback, useEffect } from 'react'
+
+import { setParentLocation } from '@redux/slices/common'
+import { useAppDispatch } from '@redux/store'
+import { useTheme } from 'next-themes'
 import useIsInIframe from 'src/hooks/useIsInIframe'
+
+import { MainNav } from './MainNav'
+import ThemeToggle from './ThemeToggle'
+import ConnectButton from './wallet/ConnectButton'
+import WalletButton from './wallet/WalletButton'
+import { useWalletContext } from './wallet/context/WalletContext'
 
 export function SiteHeader() {
   const { setTheme, theme } = useTheme()
@@ -72,18 +73,8 @@ export function SiteHeader() {
         <MainNav />
         <div className="flex flex-1 items-center justify-end space-x-4">
           <nav className="flex items-center space-x-1">
-            {/* <Link
-              href={siteConfig.links.github}
-              target="_blank"
-              rel="noreferrer"
-              className="btn"
-            >
-              <Icons.Github className="h-5 w-5" />
-            </Link> */}
-            {/* <LocaleSwitcher /> */}
             <ThemeToggle />
             <div className="inline w-6" />
-            {/* <WalletButton /> */}
             <ConnectButton />
           </nav>
         </div>
