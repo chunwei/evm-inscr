@@ -1,7 +1,3 @@
-import type { SecretKey } from '@cmdcode/crypto-utils';
-import type { ScriptData } from '@cmdcode/tapscript';
-
-
 export type User = {
   id: number
   name: string

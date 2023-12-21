@@ -1,1 +1,1 @@
-export * as WalletButton from './WalletButton'
+export * as ConnectButton from './ConnectButton'
