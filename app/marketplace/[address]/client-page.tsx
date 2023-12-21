@@ -1,24 +1,22 @@
-'use client'
+'use client';
 
-import IFrame from '@components/IFrame'
-import Icons from '@components/Icons'
-import {
-  getInscriptionContentUrl,
-  queryOrdinalsByAddress
-} from '@services/rest/api'
-import { useQuery } from '@tanstack/react-query'
-import { Card, Divider, List, Typography, message } from 'antd'
-import Meta from 'antd/es/card/Meta'
-import Search from 'antd/es/input/Search'
-import dayjs from 'dayjs'
-import relativeTime from 'dayjs/plugin/relativeTime'
-import Link from 'next/link'
-import { useCallback, useState } from 'react'
-import { ellipsisMid } from 'src/utils/string'
+import IFrame from '@components/IFrame';
+import Icons from '@components/Icons';
+import { getInscriptionContentUrl, queryOrdinalsByAddress } from '@services/rest/api';
+import { useQuery } from '@tanstack/react-query';
+import { Card, Divider, List, Typography, message } from 'antd';
+import Meta from 'antd/es/card/Meta';
+import Search from 'antd/es/input/Search';
+import dayjs from 'dayjs';
+import relativeTime from 'dayjs/plugin/relativeTime';
+import Link from 'next/link';
+import { useCallback, useState } from 'react';
+import { ellipsisMid } from 'src/utils/string';
+
 
 dayjs.extend(relativeTime)
 
-const { Title, Text } = Typographyw
+const { Title, Text } = Typography
 interface ClientPageProps {
   params: { address: string }
   searchParams: { [key: string]: string | undefined }
